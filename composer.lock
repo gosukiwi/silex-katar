@@ -1,0 +1,70 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "b71453f54d8cd02e887f62c14c65848a",
+    "packages": [
+        {
+            "name": "gosukiwi/katar",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gosukiwi/katar.git",
+                "reference": "8bd5329944935c43a08239eeb07459a1e6fcd3d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gosukiwi/katar/zipball/8bd5329944935c43a08239eeb07459a1e6fcd3d6",
+                "reference": "8bd5329944935c43a08239eeb07459a1e6fcd3d6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Katar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Federico Ramirez",
+                    "email": "fedra.arg@gmail.com",
+                    "homepage": "http://gosukiwi.github.io/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Beautiful and flexible template engine for PHP",
+            "homepage": "https://github.com/gosukiwi/katar",
+            "keywords": [
+                "katar",
+                "php",
+                "template",
+                "template engine"
+            ],
+            "time": "2014-05-18 20:09:21"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "gosukiwi/katar": 20
+    },
+    "platform": {
+        "php": ">=5.3.0"
+    },
+    "platform-dev": [
+
+    ]
+}
