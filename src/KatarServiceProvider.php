@@ -10,12 +10,22 @@ class KatarServiceProvider implements ServiceProviderInterface
 {
     public function register(Application $app)
     {
-        $app['katar'] = $app->share(function ($cache) use ($app) {
-            if(!$cache) {
-                $cache = $app['katar.cache_dir'];
+        $app['katar'] = $app->share(function ($tpl, $cache = null, 
+            $debug = null) use ($app) {
+
+            if(!is_null($cache)) {
+                $app['katar.views_cache'] = $cache;
             }
 
-            $katar = new Katar\Katar($cache);
+            if(!is_null($debug)) {
+                $app['katar.debug'] = $debug;
+            }
+
+            $app['katar.views_path'] = $tpl;
+
+            $katar = new Katar\Katar($app['katar.views_path'], 
+                $app['katar.views_cache'], $app['katar.debug']);
+
             return $katar;
         });
     }
