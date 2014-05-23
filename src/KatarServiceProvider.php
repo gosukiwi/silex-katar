@@ -3,24 +3,29 @@ namespace KatarServiceProvider;
 
 use Silex\Application;
 use Silex\ServiceProviderInterface;
-
-require_once __DIR__ . '/composer/autoload.php';
+use Katar\Katar;
 
 class KatarServiceProvider implements ServiceProviderInterface
 {
     public function register(Application $app)
     {
-        $app['katar'] = $app->share(function ($tpl, $cache = null, 
-            $debug = null) use ($app) {
+        $app['katar'] = $app->share(function () use ($app) {
 
-            // Set configuration values
-            $app['katar.views_path'] = $tpl;
-            $app['katar.views_cache'] = $cache;
-            $app['katar.debug'] = is_null($debug)
-                ? false
-                : $debug;
+            if(!isset($app['katar.views_path'])) {
+                $app['katar.views_path'] = $app['request']->getBasePath()
+                    . '/views';
+            }
 
-            $katar = new Katar\Katar($app['katar.views_path'], 
+            if(!isset($app['katar.views_cache'])) {
+                $app['katar.views_cache'] = $app['katar.views_path'] . 
+                    '/../cache';
+            }
+
+            if(!isset($app['katar.debug'])) {
+                $app['katar.debug'] = $app['debug'];
+            }
+
+            $katar = new Katar($app['katar.views_path'], 
                 $app['katar.views_cache'], $app['katar.debug']);
 
             return $katar;

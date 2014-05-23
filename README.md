@@ -12,7 +12,15 @@ Installation is easy though composer
 Then register the service
 
 ```php
-$app->register(new SilexKatar\KatarServiceProvider());
-```
+$app->register(new SilexKatar\KatarServiceProvider(), array(
+  'katar.views_path' => __DIR__ . '/views',
+  'katar.debug' => false,
+));
 
-Once you registered it just call `render`.
+// Somewhere in your code...
+
+$app->get('/myRote', function () use ($app) {
+  // Some code...
+  return $app['katar']->render('myView.katar.html', array( 'data' => 'someVal' ));
+});
+```
